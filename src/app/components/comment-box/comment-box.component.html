@@ -1,0 +1,19 @@
+<div class="comment-box">
+    <div>
+        <div>
+            <div>
+                <img [src]="user.image.link" [alt]="user.image.alt">
+            </div>
+            <div>{{user.name}}</div>
+            <div>{{comment.time|date :'shortTime'}}</div>
+        </div>
+        <div>{{}}</div>
+    </div>
+    <div>
+        {{comment.text}}
+    </div>
+    <app-voting [votes]="comment.votes" [key]="user.key"></app-voting>
+</div>
+<div class="replies" *ngIf="comment.replies" >
+    <app-comment-box *ngFor="for let c of comment.replies" [comment]="c" [user]="c.user"></app-comment-box>
+</div>
